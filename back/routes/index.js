@@ -1,0 +1,61 @@
+const router = require('express').Router();
+const rx = require('../lib/request-executor');
+const CONST = require('../lib/constants');
+
+router.get('/api/items', (req, res) => {
+    let queryParam = req.query.q;
+    let requestOptions = {
+        url: CONST.ML_API_URI + queryParam,
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        },
+        isList: true,
+    }
+
+    let response = rx.get(requestOptions);
+    
+    response.then((newResponse) => {
+        res.send(newResponse);
+    });
+});
+
+router.get('/api/items/:id', (req, res) => {
+    let id = req.params.id;
+
+    let requestOptions = {
+        url: CONST.ML_ITEM_URI + id,
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        },
+        isList: false,
+    }
+
+    let response = rx.get(requestOptions);
+    
+    response.then((newResponse) => {
+        res.send(newResponse);
+    });
+});
+
+router.get('/api/items/:id/destinations', (req, res) => {
+    let id = req.params.id;
+
+    let requestOptions = {
+        url: CONST.ML_ITEM_URI + id,
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        },
+        isList: false,
+    }
+
+    let response = rx.get(requestOptions);
+    
+    response.then((newResponse) => {
+        res.send(newResponse);
+    });
+});
+
+module.exports = router;

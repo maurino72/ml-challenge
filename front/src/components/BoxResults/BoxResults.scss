@@ -1,0 +1,24 @@
+@import '../../assets/css/colors.scss';
+
+.boxResults {
+    display: flex;
+    
+    .wrapper__container {
+        flex: 1;
+        max-width: 80%;
+        margin: 0 auto;
+
+        .boxResults__breadcrumb {
+            display: flex;
+            margin: 16px 0;
+            color: $grey;
+            font-size: 14px;
+        }
+
+        .boxResults__main {
+            z-index: 1;
+            background-color: white;
+            border-radius: 5px;
+        }
+    }
+}

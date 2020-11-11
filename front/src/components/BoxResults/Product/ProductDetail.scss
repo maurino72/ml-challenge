@@ -1,0 +1,84 @@
+@import '../../../assets/css/colors.scss';
+
+.productDetail {
+    display: flex;
+    flex: 1;
+    width: 80%;
+    margin: 0 auto;
+    
+    .boxResults__breadcrumb {
+        display: flex;
+        margin: 16px 0;
+        color: $grey;
+        font-size: 14px;
+    }
+
+    .productDetail__container {
+        flex: 1;
+        justify-content: space-between;
+        background-color: white;
+        border-radius: 5px;
+        padding: 16px;
+
+        .productDetail__heading {
+            display: flex;
+
+            .productDetail__image > img {
+                width: 680px;
+                max-width: 680px;
+                max-height: 680px;
+                object-fit: contain;
+
+            }
+
+            .productDetail__info {
+                padding-top: 32px;
+                padding-right: 32px;
+                padding-left: 16px;
+
+                .productDetail__condition {
+                    font-size: 14px;
+                    color: $darkgrey;
+                    margin-bottom: 16px;
+                }
+
+                .productDetail__title {
+                    font-size: 24px;
+                    color: $dark;
+                    // padding-top: 32px;
+                }
+
+                .productDetail__price {
+                    font-size: 46px;
+                    padding: 32px 0;
+                }
+
+                .productDetail__buyBtn {
+                    width: 100%;
+                    padding: 10px 0;
+                    background-color: $blue;
+                    color: white;
+                    border: none;
+                    outline: none;
+                    border-radius: 3px;
+                    font-size: 18px;
+                }
+            }
+        }
+
+        .productDetail__description {
+            padding: 32px;
+            max-width: 680px;
+
+            .productDetail_descriptionTitle {
+                font-size: 28px;
+            }
+
+            .productDetail__descriptionInfo {
+                color: $grey;
+                font-size: 16px;
+                padding: 32px 0;
+            }
+        }
+    }
+}
