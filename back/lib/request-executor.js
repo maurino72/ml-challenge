@@ -44,7 +44,8 @@ const _buildListResponse = async (data) => {
             },
             picture: result.thumbnail,
             condition: result.condition,
-            free_shipping: result.shipping.free_shipping
+            free_shipping: result.shipping.free_shipping,
+            location: result.address.state_name
         };
 
         itemsData.items.push(item);
@@ -88,25 +89,25 @@ async function _getCategories(categoryId, isItem = false) {
 
     let result = await _execute('get', options);
 
-    result.path_from_root.forEach((category) => {
+    result?.path_from_root?.forEach((category) => {
         categories.push(category.name);
     });
-
-    if (isItem) {
-        categories.push(result.name);
-    }
 
     return categories;
 }
 
-async function _getItemDescription(id) {
+const _getItemDescription = async (id) => {
     let options = {
-        url: CONST.ML_ITEM_URI + id + '/descriptions',
+        url: CONST.ML_ITEM_URI + id + '/description',
     }
 
     let result = await _execute('get', options);
+    
+    if (result.status === 404) {
+        return 'No se encontro descripcion';
+    }
 
-    return result[0].plain_text;
+    return result.plain_text;
 }
 
 const _get = async (options) => {
