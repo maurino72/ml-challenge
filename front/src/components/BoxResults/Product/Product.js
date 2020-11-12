@@ -5,9 +5,6 @@ import CurrencyFormat from 'react-currency-format';
 import { BrowserRouter as Router, Link } from 'react-router-dom'
 
 function Product({ item }) {
-  useEffect(() => {
-    console.log(item);
-  }, [])
   const id = item.id;
   return (
     <div className="product">
@@ -28,12 +25,15 @@ function Product({ item }) {
                 decimalScale={2}
                 value={item?.price?.amount}
                 displayType={"text"}
-                thousandSeparator={true}
+                thousandSeparator={'.'}
+                decimalSeparator={','}
+                decimalScale={2}
                 prefix={"$"}
+                fixedDecimalScale={true}
               />
               {item?.free_shipping ? <img className="product__shippingImg" src={shipping} alt=""/> : {}}
             </div>
-            <p className="product__location">Capital Federal</p>
+            <p className="product__location">{item?.location}</p>
 
             <div >
               <p className="product__description">{item?.title}</p>

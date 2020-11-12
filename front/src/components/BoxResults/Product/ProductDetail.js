@@ -50,10 +50,13 @@ function ProductDetail() {
                                 );
                                 }}
                                 decimalScale={2}
-                                value={data?.item?.price.amount}
+                                value={data?.item?.price?.amount}
                                 displayType={"text"}
-                                thousandSeparator={true}
+                                thousandSeparator={'.'}
+                                decimalSeparator={','}
+                                decimalScale={2}
                                 prefix={"$"}
+                                fixedDecimalScale={true}
                             />
 
                             <button className="productDetail__buyBtn">Comprar</button>
