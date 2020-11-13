@@ -29,9 +29,8 @@ function Product({ item }) {
                 decimalSeparator={','}
                 decimalScale={2}
                 prefix={"$"}
-                fixedDecimalScale={true}
               />
-              {/* {item.free_shipping ? <img className="product__shippingImg" src={shipping} alt=""/> : {}} */}
+              {item.free_shipping ? <img className="product__shippingImg" src={shipping} alt=""/> : ''}
             </div>
             <p className="product__location">{item.location}</p>
 
