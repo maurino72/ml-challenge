@@ -8,7 +8,7 @@ function ProductDetail() {
     const [data, setData] = useState('');
 
     useEffect(() => {
-        return fetch('http://localhost:3001/api/items/' + id)
+        fetch('http://localhost:3001/api/items/' + id)
             .then((res) => res.json())
             .then(
                 (data) => {
@@ -31,7 +31,7 @@ function ProductDetail() {
                     }
                 </p>
 
-                <div className="productDetail__container">
+                {data ? <div className="productDetail__container">
                     <div className="productDetail__heading">
                         <div className="productDetail__image">
                             <img className="productDetail__image" src={data?.item?.picture} alt=""/>
@@ -66,7 +66,7 @@ function ProductDetail() {
                         <h3 className="productDetail_descriptionTitle">Descripcion del Producto</h3>
                         <p className="productDetail__descriptionInfo">{data?.item?.description}</p>
                     </div>
-                </div>
+                </div> : ''}
             </div>
         </div>
     )

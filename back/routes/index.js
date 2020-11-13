@@ -5,7 +5,7 @@ const CONST = require('../lib/constants');
 router.get('/api/items', (req, res) => {
     let queryParam = req.query.q;
     let requestOptions = {
-        url: CONST.ML_API_URI + queryParam + '?limit=4',
+        url: CONST.ML_API_URI + queryParam,
         headers: {
             'Accept': 'application/json',
             'Content-Type': 'application/json'

@@ -10,7 +10,7 @@ function Product({ item }) {
     <div className="product">
       <Link to={'/items/' + id}>
         <div className="product__container">
-          <img className="product__image" src={item?.picture} alt=""/>
+          <img className="product__image" src={item.picture} alt={item.title}/>
 
           <div className="product__info">
             <div className="product__priceInfo">
@@ -23,7 +23,7 @@ function Product({ item }) {
                   );
                 }}
                 decimalScale={2}
-                value={item?.price?.amount}
+                value={item.price?.amount}
                 displayType={"text"}
                 thousandSeparator={'.'}
                 decimalSeparator={','}
@@ -31,12 +31,12 @@ function Product({ item }) {
                 prefix={"$"}
                 fixedDecimalScale={true}
               />
-              {item?.free_shipping ? <img className="product__shippingImg" src={shipping} alt=""/> : {}}
+              {/* {item.free_shipping ? <img className="product__shippingImg" src={shipping} alt=""/> : {}} */}
             </div>
-            <p className="product__location">{item?.location}</p>
+            <p className="product__location">{item.location}</p>
 
             <div >
-              <p className="product__description">{item?.title}</p>
+              <p className="product__description">{item.title}</p>
             </div>
           </div>
         </div>

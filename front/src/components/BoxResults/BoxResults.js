@@ -9,16 +9,21 @@ function useQuery() {
 
 function BoxResults() {
   const query = useQuery();
-  const [searchResults, setSearchResults] = useState([]);
+  const [items, setItems] = useState();
+  const [categories, setCategories] = useState();
 
-  useEffect(async () => {
+  useEffect(() => {
     let queryString = query.get('search');
-    let url = "http://localhost:3001/api/items?q=" + queryString
+    let url = "http://localhost:3001/api/items?q=" + queryString;
 
     if (queryString) {
-      let response = await fetch(url);
-      let data = await response.json();
-      setSearchResults(data);
+      fetch(url)
+        .then(res => res.json())
+        .then((response) => {
+          setCategories(response.categories);
+          setItems(response.items);
+        })
+        .catch((error) => console.log(error.message));
     }
   }, [query.get('search')]);
 
@@ -26,21 +31,20 @@ function BoxResults() {
     <div className="boxResults">
       <div className="wrapper__container">
         <p className="boxResults__breadcrumb">
-          {
-            searchResults?.categories?.map(
+          {categories?.length > 1 ?
+            categories?.map(
               (category) => {
                 return category
               }
             ).reduce((prev, curr) => [prev, ' > ', curr])
-          }
+          : ''}
         </p>
-
         <div className="boxResults__main">
-          {searchResults?.items?.map((item, index) => {
-            return <Product 
-              key={index}
-              item={item}
-            />
+          {items?.map((item) => {
+              return <Product 
+                key={item.id}
+                item={item}
+              />
           })}
         </div>
       </div>
